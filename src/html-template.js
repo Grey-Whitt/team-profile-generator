@@ -1,52 +1,29 @@
-
-const employees = [{
-    name: 'grey',
-    id: '1',
-    email: 'greywhitt@gmail.com',
-    role: 'Manager',
-    officeNumber: '123'
-  },
-   {
-    name: 'engi',
-    id: '2',
-    email: 'engmail.com',
-    role: 'Engineer',
-    github: 'engi1'
-  },
-   {
-    name: 'intern1',
-    id: '3',
-    email: 'internemail',
-    role: 'Intern',
-    school: 'university'
-}]
-
+//this loops through the array of team members and sends the data to the corresponding function to be built
+//then returns the template with all data in its correct place
 const buildCards = (team) => {
   const length = team.length
-  console.log(length)
+  
   for (i = 0; i < length; i++) {
     const role = team[i].role
-    console.log('index ' + [i])
-    console.log(role + ' role')
     if (role === 'Manager') {
-        managerCard(team[i])
+      managerCard(team[i])
     } else if (role === 'Engineer') {
-        engineerCard(team[i])
-    } else if (role === 'Intern') {
-        internCard(team[i])
+      engineerCard(team[i])
     } else {
-      console.log('oh no no')
-      break
+      internCard(team[i])
     }
   }
 
   return template(teamCards)
 }
 
+//this is where the cards get stored after they have been built
 const teamCards = []
 
+//cards get built then sent  pushed to array
+//builds manager card
 const managerCard = (manager) => {
-    //console.log(manager)
+    
     let mCard = `
     <div class="card m-3 shadow border border-dark bg-primary" style="width: 18rem;">
                 <div class="card-body text-light">
@@ -64,43 +41,46 @@ const managerCard = (manager) => {
     teamCards.push(mCard)
 }
 
+//builds engineer card
 const engineerCard = (engineer) => {
-    //console.log(engineer)
-    let eCard = `
-    <div class="card m-3 shadow border border-dark bg-primary" style="width: 18rem;">
-    <div class="card-body text-light">
-      <h5 class="card-title">${engineer.name}</h5>
-      <p class="card-text">${engineer.role}</p>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">ID: ${engineer.id}</li>
-      <li class="list-group-item">Email: <a href = "mailto: ${engineer.email}">${engineer.email}</a></li>
-      <li class="list-group-item">GitHub: <a href='https://github.com/${engineer.github}' target="_blank">${engineer.github}</a></li>
-    </ul>
-    </div>
-    `
-    teamCards.push(eCard)
+    
+  let eCard = `
+  <div class="card m-3 shadow border border-dark bg-primary" style="width: 18rem;">
+  <div class="card-body text-light">
+    <h5 class="card-title">${engineer.name}</h5>
+    <p class="card-text">${engineer.role}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">ID: ${engineer.id}</li>
+    <li class="list-group-item">Email: <a href = "mailto: ${engineer.email}">${engineer.email}</a></li>
+    <li class="list-group-item">GitHub: <a href='https://github.com/${engineer.github}' target="_blank">${engineer.github}</a></li>
+  </ul>
+  </div>
+  `
+  teamCards.push(eCard)
 
 }
 
+//builds intern card
 const internCard = (intern) => {
-    //console.log(intern)
-    let iCard = `
-    <div class="card m-3 shadow border border-dark bg-primary" style="width: 18rem;">
-                <div class="card-body text-light">
-                  <h5 class="card-title">${intern.name}</h5>
-                  <p class="card-text">${intern.role}</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">ID: ${intern.id}</li>
-                  <li class="list-group-item">Email: <a href = "mailto: ${intern.email}">${intern.email}</a></li>
-                  <li class="list-group-item">School: ${intern.school}</a></li>
-                </ul>
-            </div>
+    
+  let iCard = `
+  <div class="card m-3 shadow border border-dark bg-primary" style="width: 18rem;">
+              <div class="card-body text-light">
+                <h5 class="card-title">${intern.name}</h5>
+                <p class="card-text">${intern.role}</p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">ID: ${intern.id}</li>
+                <li class="list-group-item">Email: <a href = "mailto: ${intern.email}">${intern.email}</a></li>
+                <li class="list-group-item">School: ${intern.school}</a></li>
+              </ul>
+          </div>
     `
-    teamCards.push(iCard)
+  teamCards.push(iCard)
 }
 
+//this is the main html template where the cards get inserted
 const template = (yourTeam) => {
 
   return`

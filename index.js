@@ -81,7 +81,7 @@ const buildIntern = (data) => {
   teamMembers.push(intern)
 }
 
-
+//this is the function used to check if the user has selected to end the program
 const checkEnd = (status) => {
   //if user wants to finish their team, move to writing the html file
   if (status === 'Finish My Team') {
@@ -91,6 +91,7 @@ const checkEnd = (status) => {
   }
 }
 
+//once the user chooses to end the program the file will be generated
 const endQuest = () => {
   //write file here
   fs.writeFile('./dist/myTeam.html', template(teamMembers), function (err) {
