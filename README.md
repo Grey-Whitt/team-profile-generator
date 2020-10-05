@@ -9,7 +9,8 @@ This is a command line project that will generate an html page to show your team
 
 
 ## Installation 
-    To see installation, usage, and testing, view the video walk through
+    To see installation, usage, and testing, view the video walk through video -
+https://youtu.be/DSM6tjI75pY
 
 
 ## Contact
